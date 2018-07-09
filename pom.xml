@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>upskills.com</groupId>
+	<artifactId>RecordAndGenerateAutomationTest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<build>
+		<finalName>RecordAndGenerateAutomationTest</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>upskills.com.App</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<tasks>
+						<replace token="JavaSE-1.8&#34;&#62;"
+							value="JavaSE-1.8&#34;&#62;&#13; &#60;accessrules&#62;&#13; &#60;accessrule kind=&#34;accessible&#34; pattern=&#34;javafx/**&#34;/&#62;&#13; &#60;accessrule kind=&#34;accessible&#34; pattern=&#34;netscape/**&#34;/&#62;&#13;&#60;/accessrules&#62;"
+							file=".classpath">
+						</replace>
+					</tasks>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+	</dependencies>
+</project>
